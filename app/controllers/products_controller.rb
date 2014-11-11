@@ -11,9 +11,10 @@ class ProductsController < ApplicationController
 
   def show
   end
-end
 
-private
+  private
+
   def set_product
     @product = Product.find(params[:id])
   end
+end
