@@ -21,12 +21,12 @@ module CRAShopWebpage
     # config.i18n.default_locale = :de
 
 
-    en:
-      hello: "Hello world"
-      views:
-        pagination:
-          previous: "&lt; Previous"
-          next: "Next &gt;"
-          truncate: "..."
+    # en:
+    #   hello: "Hello world"
+    #   views:
+    #     pagination:
+    #       previous: "&lt; Previous"
+    #       next: "Next &gt;"
+    #       truncate: "..."
   end
 end
