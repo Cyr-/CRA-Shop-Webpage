@@ -1,4 +1,4 @@
 div class="product"
-  h3 == product.name
+  h3 == link_to product.name, product
   p == number_to_currency(product.price)
   p == product.description
