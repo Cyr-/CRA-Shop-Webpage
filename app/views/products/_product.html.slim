@@ -1,4 +1,7 @@
-div class="product"
-  h3 == link_to product.name, product
-  p == number_to_currency(product.price)
-  p == product.description
+div class="col-md-4"
+  div class="well"
+
+    h3 == link_to product.name, product
+
+    p == number_to_currency(product.price)
+    p == product.description

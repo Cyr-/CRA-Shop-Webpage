@@ -6,7 +6,11 @@ div class="jumbotron"
     Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum
     nibh, ut fermentum massa justo sit amet risus.
 
-section class="new_products"
-  h3 Newest Products
-  - @products.each do |product|
+h3 Newest Products
+section class="row"
+  - @products.first(3).each do |product|
+    == render product
+
+section class="row"
+  - @products.last(3).each do |product|
     == render product

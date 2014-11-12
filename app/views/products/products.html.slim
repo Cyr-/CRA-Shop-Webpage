@@ -1,7 +1,14 @@
 == render 'layouts/navigation'
 
 h2 Products
-- @products.each do |product|
-  == render product
+
+section class="row"
+  section class="row"
+    - @products.first(3).each do |product|
+      == render product
+
+  section class="row"
+    - @products.last(3).each do |product|
+      == render product
 
 == paginate @products
