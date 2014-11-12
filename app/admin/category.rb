@@ -1,4 +1,5 @@
-ActiveAdmin.register Product do
+ActiveAdmin.register Category do
+
 
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
@@ -13,22 +14,6 @@ ActiveAdmin.register Product do
   #   permitted
   # end
 
-  permit_params :name, :price, :stock_quantity, :description, :category_id
-
-  index :title => "Products" do
-    column :name
-
-    column :price do |product|
-      number_to_currency product.price
-    end
-
-    column :stock_quantity
-
-    column :description
-
-    column :category_id
-
-    actions
-  end
+permit_params :name
 
 end
