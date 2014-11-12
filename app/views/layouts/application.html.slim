@@ -7,10 +7,12 @@ html lang="en"
     meta charset="UTF-8"
   body
     div class="container"
-      div class="header"
+      header
         h3 class="text-muted" Central Red Army Store
 
       == yield
 
       p class="notice" == notice
       p class="alert" == alert
+
+    == render 'layouts/footer'
