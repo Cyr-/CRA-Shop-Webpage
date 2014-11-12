@@ -3,6 +3,7 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.order(id: :desc).limit(6)
+    @categories = Category.all
   end
 
   def products
