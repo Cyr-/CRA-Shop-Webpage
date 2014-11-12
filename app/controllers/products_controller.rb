@@ -2,11 +2,11 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   def index
-    @products = Product.order('id').limit(6)
+    @products = Product.order(id: :desc).limit(6)
   end
 
   def products
-    @products = Product.order('id').page(params[:page]).per(5)
+    @products = Product.order('id').page(params[:page]).per(6)
   end
 
   def show
