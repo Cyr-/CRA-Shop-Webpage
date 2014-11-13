@@ -1,10 +1,17 @@
-nav class="nav navbar-default" role="navigation"
-  ul class="nav nav-justified"
-    li class="active"
-      == link_to 'Home', root_url
-    li
-      == link_to 'Products', products_url
-    li
-      == link_to 'About', about_url
-    li
-      == link_to 'Contact', contact_url
+nav class="navbar navbar-default" role="navigation"
+  div class="navbar-header"
+    button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse"
+      span class="sr-only" Toggle navigation
+      span class="icon-bar"
+      span class="icon-bar"
+      span class="icon-bar"
+  div class="navbar-collapse collapse" aria-expanded="false"
+    ul class="nav nav-justified"
+      li
+        == link_to 'Home', root_url
+      li
+        == link_to 'Products', products_url
+      li
+        == link_to 'About', about_url
+      li
+        == link_to 'Contact', contact_url
