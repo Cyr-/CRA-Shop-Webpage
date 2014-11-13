@@ -19,9 +19,26 @@ ActiveAdmin.register Category do
   permit_params :name
 
   index :title => "Categories" do
+
     column :name
 
     actions
+  end
+
+  show do |category|
+    panel("Products in this category") do
+      table_for(category.products) do
+        column "Name" do |product|
+          product.name
+        end
+        column "Price" do |product|
+          product.price
+        end
+        column "Quantity" do |product|
+          product.stock_quantity
+        end
+      end
+    end
   end
 
 end
