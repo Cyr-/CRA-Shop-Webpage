@@ -1,6 +1,5 @@
 ActiveAdmin.register Page do
 
-
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
@@ -18,7 +17,7 @@ ActiveAdmin.register Page do
 
   permit_params :title, :content
 
-  index :title => "Pages" do
+  index title: 'Pages' do
     column :title
 
     column :content

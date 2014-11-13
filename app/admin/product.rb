@@ -17,7 +17,7 @@ ActiveAdmin.register Product do
 
   permit_params :name, :price, :stock_quantity, :description, :category_id
 
-  index :title => "Products" do
+  index title: 'Products' do
     column :name
 
     column :price do |product|

@@ -1,6 +1,5 @@
 ActiveAdmin.register Category do
 
-
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
@@ -18,23 +17,22 @@ ActiveAdmin.register Category do
 
   permit_params :name
 
-  index :title => "Categories" do
-
+  index title: 'Categories' do
     column :name
 
     actions
   end
 
   show do |category|
-    panel("Products in this category") do
+    panel('Products in this category') do
       table_for(category.products) do
-        column "Name" do |product|
+        column 'Name' do |product|
           product.name
         end
-        column "Price" do |product|
+        column 'Price' do |product|
           product.price
         end
-        column "Quantity" do |product|
+        column 'Quantity' do |product|
           product.stock_quantity
         end
       end
