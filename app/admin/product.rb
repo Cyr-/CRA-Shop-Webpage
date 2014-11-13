@@ -13,6 +13,8 @@ ActiveAdmin.register Product do
   #   permitted
   # end
 
+  menu priority: 2
+
   permit_params :name, :price, :stock_quantity, :description, :category_id
 
   index :title => "Products" do

@@ -14,6 +14,14 @@ ActiveAdmin.register Category do
   #   permitted
   # end
 
-permit_params :name
+  menu priority: 3
+
+  permit_params :name
+
+  index :title => "Categories" do
+    column :name
+
+    actions
+  end
 
 end
