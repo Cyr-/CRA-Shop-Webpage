@@ -14,8 +14,9 @@ section class="row"
         == render product
 
     section class="row"
-      - @products.last(3).each do |product|
-        == render product
+      -if @products.count > 3
+        - @products.last(3).each do |product|
+          == render product
 
 
 == paginate @products
