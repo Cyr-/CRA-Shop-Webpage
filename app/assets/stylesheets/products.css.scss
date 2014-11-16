@@ -1,3 +1,72 @@
 // Place all the styles related to the products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$cra-red: #E6393F;
+$cra-blue: #213770;
+$cra-white: #FFF;
+
+body{
+  background-color: $cra-red;
+
+  .container{
+    background-color: $cra-white;
+
+    .company-name{
+      color: $cra-blue;
+    }
+
+    .nav-justified{
+      background-color: #EEE;
+      border: 1px solid #CCC;
+      border-radius: 5px;
+      max-height: 52px;
+
+
+      li:first-child{
+        border-radius: 5px 5px 0px 0px;
+
+        a{
+          border-left: 0;
+          border-radius: 5px 0 0 5px;
+        }
+      }
+
+      li{
+
+        a{
+          padding-top: 15px;
+          padding-bottom: 15px;
+          margin-bottom: 0px;
+          font-weight: bold;
+          color: #777;
+          text-align: center;
+          background-color:#E5E5E5;
+          background-repeat: repeat-x;
+          border-bottom: 1px solid #D5D5D5;
+          border-right: 1px solid #d5d5d5;
+          border-left: 1px solid #fff;
+          text-decoration: none;
+        }
+
+        a:hover{
+          background-color: #DDD;
+          background-image: none;
+        }
+      }
+
+      li:last-child{
+        border-radius: 0px 0px 5px 5px;
+        border-bottom: 0;
+
+        a{
+          border-right: 0;
+          border-radius: 0 5px 5px 0;
+        }
+      }
+    }
+
+    .jumbotron{
+      text-align: center;
+    }
+  }
+}
