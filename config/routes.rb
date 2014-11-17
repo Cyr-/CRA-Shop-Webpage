@@ -13,6 +13,8 @@ Rails.application.routes.draw do
 
   get 'contact' => 'contact#index'
 
+  get 'category/:id', to: 'categories#index', as: 'category'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
