@@ -18,6 +18,7 @@ ActiveAdmin.register Category do
   permit_params :name
 
   index title: 'Categories' do
+    selectable_column
     column :name
 
     actions

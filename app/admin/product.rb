@@ -18,6 +18,7 @@ ActiveAdmin.register Product do
   permit_params :name, :price, :stock_quantity, :description, :category_id, :image
 
   index title: 'Products' do
+    selectable_column
     column :name
 
     column :price do |product|

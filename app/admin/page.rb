@@ -17,6 +17,8 @@ ActiveAdmin.register Page do
 
   permit_params :title, :content
 
+  config.batch_actions = false
+
   index title: 'Pages' do
     column :title
 
