@@ -26,7 +26,7 @@ ActiveAdmin.register Product do
 
     column :stock_quantity
     column :description
-    column :category_id
+    column :category
 
     actions
   end
