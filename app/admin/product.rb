@@ -15,7 +15,7 @@ ActiveAdmin.register Product do
 
   menu priority: 2
 
-  permit_params :name, :price, :stock_quantity, :description, :category_id
+  permit_params :name, :price, :stock_quantity, :description, :category_id, :image
 
   index title: 'Products' do
     column :name

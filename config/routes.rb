@@ -9,9 +9,9 @@ Rails.application.routes.draw do
 
   get 'products/:id' => 'products#show', as: 'product'
 
-  get 'about' => 'about#index'
+  get 'about' => 'about#index', as: 'about'
 
-  get 'contact' => 'contact#index'
+  get 'contact' => 'contact#index', as: 'contact'
 
   get 'category/:id', to: 'categories#index', as: 'category'
 
