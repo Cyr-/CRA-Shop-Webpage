@@ -3,5 +3,8 @@ div class="col-md-4"
 
     h3 == link_to product.name, product
 
+    - if product.image.present?
+      == image_tag product.image_url(:thumb)
+
     p == number_to_currency(product.price)
     p == product.description
