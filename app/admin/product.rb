@@ -25,12 +25,22 @@ ActiveAdmin.register Product do
     end
 
     column :stock_quantity
-
     column :description
-
     column :category_id
 
     actions
+  end
+
+  form(:html => { :multipart => true }) do |f|
+    f.inputs 'Product Details' do
+      f.input :name
+      f.input :price
+      f.input :stock_quantity
+      f.input :description
+      f.input :category
+      f.input :image
+    end
+    f.actions
   end
 
 end
