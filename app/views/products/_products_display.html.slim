@@ -14,7 +14,7 @@ section class="row"
             - if product.image.present?
               == image_tag product.image.url(:thumb)
             h2
-              span class="label label-success" == number_to_currency(product.price)
+              span class="label label-primary" == number_to_currency(product.price)
 
     section class="row"
       -if @products.count > 3
@@ -26,4 +26,4 @@ section class="row"
               - if product.image.present?
                 == image_tag product.image.url(:thumb)
               h2
-                span class="label label-success" == number_to_currency(product.price)
+                span class="label label-primary" == number_to_currency(product.price)
