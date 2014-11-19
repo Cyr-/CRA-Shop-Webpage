@@ -7,7 +7,8 @@ class ProductsController < ApplicationController
   end
 
   def products
-    @products = Product.order('id').page(params[:page]).per(6)
+    @products = Product.order('id')
+                .page(params[:page]).per(6)
     @categories = Category.all
   end
 

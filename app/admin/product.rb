@@ -15,7 +15,8 @@ ActiveAdmin.register Product do
 
   menu priority: 2
 
-  permit_params :name, :price, :stock_quantity, :description, :category_id, :image
+  permit_params :name, :price, :stock_quantity, :description,
+                :category_id, :image
 
   index title: 'Products' do
     selectable_column
@@ -32,7 +33,7 @@ ActiveAdmin.register Product do
     actions
   end
 
-  form(:html => { :multipart => true }) do |f|
+  form(html: { multipart: true }) do |f|
     f.inputs 'Product Details' do
       f.input :name
       f.input :price
