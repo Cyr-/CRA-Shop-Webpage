@@ -1,3 +1,5 @@
+- number_of_products_per_row = 3
+
 section class="row"
   div class="col-md-3"
     - @categories.each do |category|
@@ -6,10 +8,12 @@ section class="row"
 
     li class="list-group-item"
       a == link_to 'New', new_products_path
+    li class="list-group-item"
+      a == link_to 'Updated', updated_products_path
 
   div class="col-md-9"
     section class="row"
-      - @products.first(3).each do |product|
+      - @products.first(number_of_products_per_row).each do |product|
         div class="col-md-4"
           div class="well"
             h3 == link_to product.name, product
@@ -20,8 +24,9 @@ section class="row"
               span class="label label-primary" == number_to_currency(product.price)
 
     section class="row"
-      -if @products.count > 3
-        - @products.last(3).each do |product|
+      -if @products.count > number_of_products_per_row
+        - number_of_products_for_second_row = @products.count - number_of_products_per_row
+        - @products.last(number_of_products_for_second_row).each do |product|
           div class="col-md-4"
             div class="well"
               h3 == link_to product.name, product
