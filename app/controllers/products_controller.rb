@@ -15,6 +15,12 @@ class ProductsController < ApplicationController
   def show
   end
 
+  def new
+    @products = Product.where('created_at > ?', 7.days.ago)
+                .page(params[:page]).per(6)
+    @categories = Category.all
+  end
+
   private
 
   def set_product

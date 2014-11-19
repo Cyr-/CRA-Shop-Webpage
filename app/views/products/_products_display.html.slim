@@ -2,7 +2,10 @@ section class="row"
   div class="col-md-3"
     - @categories.each do |category|
       li class="list-group-item"
-        a href="#" == link_to category.name, category_path(category)
+        a == link_to category.name, category_path(category)
+
+    li class="list-group-item"
+      a == link_to 'New', new_products_path
 
   div class="col-md-9"
     section class="row"
