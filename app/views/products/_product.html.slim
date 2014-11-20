@@ -8,5 +8,5 @@ div class="product_page"
     p == product.description
 
   div class="col-md-3"
-    p == number_to_currency(product.price)
+    p == product.sale_price.zero? ? number_to_currency(product.price) : number_to_currency(product.sale_price)
     == link_to 'Add to cart', '#'
