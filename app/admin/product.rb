@@ -1,5 +1,4 @@
 ActiveAdmin.register Product do
-
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
@@ -30,7 +29,6 @@ ActiveAdmin.register Product do
       number_to_currency product.sale_price
     end
 
-
     column :stock_quantity
     column :description
     column :category
@@ -42,7 +40,7 @@ ActiveAdmin.register Product do
     f.inputs 'Product Details' do
       f.input :name
       f.input :price
-      f.input :sale_price, :input_html => { :value => 0 }
+      f.input :sale_price, input_html: { value: 0 }
       f.input :stock_quantity
       f.input :description
       f.input :category
@@ -50,5 +48,4 @@ ActiveAdmin.register Product do
     end
     f.actions
   end
-
 end
