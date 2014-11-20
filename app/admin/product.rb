@@ -16,7 +16,7 @@ ActiveAdmin.register Product do
   menu priority: 2
 
   permit_params :name, :price, :stock_quantity, :description,
-                :category_id, :image
+                :category_id, :image, :sale_price
 
   index title: 'Products' do
     selectable_column
@@ -25,6 +25,11 @@ ActiveAdmin.register Product do
     column :price do |product|
       number_to_currency product.price
     end
+
+    column :sale_price do |product|
+      number_to_currency product.sale_price
+    end
+
 
     column :stock_quantity
     column :description
@@ -37,6 +42,7 @@ ActiveAdmin.register Product do
     f.inputs 'Product Details' do
       f.input :name
       f.input :price
+      f.input :sale_price
       f.input :stock_quantity
       f.input :description
       f.input :category
