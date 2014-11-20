@@ -19,6 +19,8 @@ Rails.application.routes.draw do
 
   get 'updated_products' => 'products#updated', as: 'updated_products'
 
+  get 'sale_products' => 'products#sale', as: 'sale_products'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

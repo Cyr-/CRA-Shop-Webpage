@@ -10,6 +10,7 @@ div class="container-fluid"
 
         == link_to 'New', new_products_path, class: 'list-group-item'
         == link_to 'Updated', updated_products_path, class: 'list-group-item'
+        == link_to 'On Sale', sale_products_path, class: 'list-group-item'
 
     div class="col-md-9"
       - @products.each do |product|

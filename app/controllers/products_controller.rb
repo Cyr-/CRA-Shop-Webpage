@@ -27,6 +27,13 @@ class ProductsController < ApplicationController
     @categories = Category.all
   end
 
+  def sale
+    @products = Product.where('sale_price != ?', '0')
+    .page(params[:page]).per(6)
+    @categories = Category.all
+  end
+
+
   private
 
   def set_product
