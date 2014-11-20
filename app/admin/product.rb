@@ -42,7 +42,7 @@ ActiveAdmin.register Product do
     f.inputs 'Product Details' do
       f.input :name
       f.input :price
-      f.input :sale_price
+      f.input :sale_price, :input_html => { :value => 0 }
       f.input :stock_quantity
       f.input :description
       f.input :category
