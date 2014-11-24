@@ -1,0 +1,7 @@
+== render 'layouts/navigation'
+
+h2 Search Results for #{params[:keyword_search]}
+
+== render 'products/products_display'
+
+== paginate @products

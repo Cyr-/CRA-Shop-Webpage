@@ -21,6 +21,8 @@ Rails.application.routes.draw do
 
   get 'sale_products' => 'products#sale', as: 'sale_products'
 
+  get 'search_results' => 'products#search_results', as: 'search_results'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

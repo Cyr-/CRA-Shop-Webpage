@@ -33,6 +33,13 @@ class ProductsController < ApplicationController
     @categories = Category.all
   end
 
+  def search_results
+    wildcard_keywords = "%#{params[:keyword_search]}%"
+    @products = Product.where('name LIKE ?',  wildcard_keywords)
+                .page(params[:page]).per(6)
+    @categories = Category.all
+  end
+
   private
 
   def set_product
