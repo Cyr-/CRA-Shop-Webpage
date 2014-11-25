@@ -1,6 +1,9 @@
 == render 'layouts/navigation'
 
-h2 Search Results for #{params[:keyword_search]}
+h2 Search Results
+
+- flash.each do |key, message|
+  h4 == message
 
 == render 'products/products_display'
 

@@ -1,7 +1,7 @@
 nav class="navbar navbar-default" role="navigation"
   div class="container-fluid"
     div class="navbar-header"
-      button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false" aria-controls="navbar"
+      button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse"
         span class="sr-only" Toggle navigation
         span class="icon-bar"
         span class="icon-bar"
@@ -20,5 +20,6 @@ nav class="navbar navbar-default" role="navigation"
 
       = form_tag search_results_url, method: :get, class: 'navbar-form navbar-right' do
         div class="form-group"
-          = text_field_tag :keyword_search, nil, placeholder: 'Search', class: 'form-control'
-        = submit_tag 'Search', class: 'btn btn-default'
+          = text_field_tag 'keyword_search', nil, placeholder: 'Search', class: 'form-control'
+          = select_tag 'category', options_from_collection_for_select(@categories, 'id', 'name'), prompt: 'All Categories', class: 'form-control'
+        = submit_tag 'search', class: 'btn btn-primary'
