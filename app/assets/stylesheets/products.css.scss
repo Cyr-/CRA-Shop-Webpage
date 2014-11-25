@@ -36,3 +36,11 @@ body{
     margin-right: auto;
   }
 }
+
+nav.pagination_holder{
+  text-align: center;
+
+  ul.pagination{
+    display: inline-block;
+  }
+}
