@@ -1,4 +1,4 @@
-ActiveAdmin.register Page do
+ActiveAdmin.register Region do
 
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
@@ -13,16 +13,16 @@ ActiveAdmin.register Page do
   #   permitted
   # end
 
-  menu priority: 5
+  permit_params :name, :gst, :pst, :hst
 
-  permit_params :title, :content
+  menu priority: 4
 
-  config.batch_actions = false
-
-  index title: 'Pages' do
-    column :title
-
-    column :content
+  index title: 'Regions' do
+    selectable_column
+    column :name
+    column :gst
+    column :pst
+    column :hst
 
     actions
   end
