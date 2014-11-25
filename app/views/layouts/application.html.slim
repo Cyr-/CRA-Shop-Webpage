@@ -6,13 +6,13 @@ html lang="en"
     == stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
     == javascript_include_tag 'application', 'data-turbolinks-track' => true
   body
-    div class="container"
+    div.container
       header
-        h3 class="company_name" Central Red Army Store
+        h3.company_name Central Red Army Store
 
       == yield
 
-      p class="notice" == notice
-      p class="alert" == alert
+      p.notice == notice
+      p.alert == alert
 
       == render 'layouts/footer'

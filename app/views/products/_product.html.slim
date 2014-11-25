@@ -1,12 +1,12 @@
-div class="product_page"
+div.product_page
   h1 == product.name
 
   - if product.image.present?
     == image_tag product.image.url(:display), :class => "img-thumbnail"
 
-  div class="col-md-9"
+  div.col-md-9
     p == product.description
 
-  div class="col-md-3"
+  div.col-md-3
     p == product.sale_price.zero? ? number_to_currency(product.price) : number_to_currency(product.sale_price)
     == link_to 'Add to cart', '#'
