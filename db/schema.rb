@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141124232735) do
+ActiveRecord::Schema.define(version: 20141125032618) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -78,6 +78,19 @@ ActiveRecord::Schema.define(version: 20141124232735) do
     t.decimal  "gst",        precision: 4, scale: 3
     t.decimal  "pst",        precision: 4, scale: 3
     t.decimal  "hst",        precision: 4, scale: 3
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", force: true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "city"
+    t.integer  "province_id"
+    t.string   "postal_code"
+    t.string   "phone"
+    t.string   "address"
+    t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
