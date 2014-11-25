@@ -10,6 +10,8 @@ class ProductsController < ApplicationController
     @products = Product.order(:id)
                 .page(params[:page]).per(6)
     @categories = Category.all
+
+    were_any_products_returned?(@products)
   end
 
   def show
@@ -20,18 +22,24 @@ class ProductsController < ApplicationController
     @products = Product.where('created_at > ?', 7.days.ago)
                 .page(params[:page]).per(6)
     @categories = Category.all
+
+    were_any_products_returned?(@products)
   end
 
   def updated
     @products = Product.where('updated_at > ?', 7.days.ago)
                 .page(params[:page]).per(6)
     @categories = Category.all
+
+    were_any_products_returned?(@products)
   end
 
   def sale
     @products = Product.where('sale_price != ?', '0')
                 .page(params[:page]).per(6)
     @categories = Category.all
+
+    were_any_products_returned?(@products)
   end
 
   def search_results
@@ -45,18 +53,10 @@ class ProductsController < ApplicationController
         find_products_from_all_categories(wildcard_keywords)
       end
     else
-      @products = Product.order(:id)
-                  .page(params[:page]).per(6)
-
-      flash[:notice] = "Your search did not match any products."
+      were_any_products_returned?(@products)
     end
 
-    if @products.blank? then
-      @products = Product.order(:id)
-                  .page(params[:page]).per(6)
-
-      flash[:notice] = "Your search did not match any products."
-    end
+    were_any_products_returned?(@products)
   end
 
   private
@@ -82,5 +82,14 @@ class ProductsController < ApplicationController
   def find_products_from_all_categories(wildcard_keywords)
     @products = Product.where('name LIKE ?', wildcard_keywords)
                 .page(params[:page]).per(6)
+  end
+
+  def were_any_products_returned?(products)
+    if products.blank? then
+      flash.now[:notice] = "No products were found."
+
+      @products = Product.order(:id)
+      .page(params[:page]).per(6)
+    end
   end
 end
