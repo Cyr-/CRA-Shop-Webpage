@@ -20,9 +20,15 @@ ActiveAdmin.register Region do
   index title: 'Regions' do
     selectable_column
     column :name
-    column :gst
-    column :pst
-    column :hst
+    column 'GST' do |region|
+      number_to_percentage region.gst*100, precision: 3
+    end
+    column 'PST' do |region|
+      number_to_percentage region.pst*100, precision: 3
+    end
+    column 'HST' do |region|
+      number_to_percentage region.hst*100, precision: 3
+    end
 
     actions
   end
