@@ -75,12 +75,14 @@ class ProductsController < ApplicationController
 
   def find_products_limited_by_category(wildcard_keywords)
     @products = Category.find_by_id(params[:category])
-                .products.where('name LIKE ?', wildcard_keywords)
+                .products.where('name LIKE ? or description LIKE ?',
+                wildcard_keywords, wildcard_keywords)
                 .page(params[:page]).per(6)
   end
 
   def find_products_from_all_categories(wildcard_keywords)
-    @products = Product.where('name LIKE ?', wildcard_keywords)
+    @products = Product.where('name LIKE ? or description LIKE ?',
+                wildcard_keywords, wildcard_keywords)
                 .page(params[:page]).per(6)
   end
 
