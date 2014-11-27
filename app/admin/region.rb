@@ -1,5 +1,4 @@
 ActiveAdmin.register Region do
-
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
@@ -21,13 +20,13 @@ ActiveAdmin.register Region do
     selectable_column
     column :name
     column 'GST' do |region|
-      number_to_percentage region.gst*100, precision: 3
+      number_to_percentage region.gst * 100, precision: 3
     end
     column 'PST' do |region|
-      number_to_percentage region.pst*100, precision: 3
+      number_to_percentage region.pst * 100, precision: 3
     end
     column 'HST' do |region|
-      number_to_percentage region.hst*100, precision: 3
+      number_to_percentage region.hst * 100, precision: 3
     end
 
     actions

@@ -46,15 +46,7 @@ class ProductsController < ApplicationController
     wildcard_keywords = "%#{params[:keyword_search]}%"
     @categories = Category.all
 
-    if(user_entered_keyword_search) then
-      if(user_limited_search_by_category) then
-        find_products_limited_by_category(wildcard_keywords)
-      else
-        find_products_from_all_categories(wildcard_keywords)
-      end
-    else
-      were_any_products_returned?(@products)
-    end
+    check_user_search_values(wildcard_keywords)
 
     were_any_products_returned?(@products)
   end
@@ -76,22 +68,28 @@ class ProductsController < ApplicationController
   def find_products_limited_by_category(wildcard_keywords)
     @products = Category.find_by_id(params[:category])
                 .products.where('name LIKE ? or description LIKE ?',
-                wildcard_keywords, wildcard_keywords)
+                                wildcard_keywords, wildcard_keywords)
                 .page(params[:page]).per(6)
   end
 
   def find_products_from_all_categories(wildcard_keywords)
     @products = Product.where('name LIKE ? or description LIKE ?',
-                wildcard_keywords, wildcard_keywords)
+                              wildcard_keywords, wildcard_keywords)
                 .page(params[:page]).per(6)
   end
 
   def were_any_products_returned?(products)
-    if products.blank? then
-      flash.now[:notice] = "No products were found."
+    return @products = Product.order(:id)
+                       .page(params[:page]).per(6) if products.blank?
 
-      @products = Product.order(:id)
-      .page(params[:page]).per(6)
+    flash.now[:notice] = 'No products were found.'
+  end
+
+  def check_user_search_values(wildcard_keywords)
+    if user_limited_search_by_category
+      find_products_limited_by_category(wildcard_keywords)
+    else
+      find_products_from_all_categories(wildcard_keywords)
     end
   end
 end
