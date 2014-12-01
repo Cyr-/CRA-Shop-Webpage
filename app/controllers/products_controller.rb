@@ -11,6 +11,7 @@ class ProductsController < ApplicationController
                 .page(params[:page]).per(6)
     @categories = Category.all
 
+    flash.now[:notice] = 'No products were found.' if @products.blank?
     were_any_products_returned?(@products)
   end
 
@@ -23,6 +24,7 @@ class ProductsController < ApplicationController
                 .page(params[:page]).per(6)
     @categories = Category.all
 
+    flash.now[:notice] = 'No products were found.' if @products.blank?
     were_any_products_returned?(@products)
   end
 
@@ -31,6 +33,7 @@ class ProductsController < ApplicationController
                 .page(params[:page]).per(6)
     @categories = Category.all
 
+    flash.now[:notice] = 'No products were found.' if @products.blank?
     were_any_products_returned?(@products)
   end
 
@@ -39,15 +42,20 @@ class ProductsController < ApplicationController
                 .page(params[:page]).per(6)
     @categories = Category.all
 
+    flash.now[:notice] = 'No products were found.' if @products.blank?
     were_any_products_returned?(@products)
   end
 
   def search_results
-    wildcard_keywords = "%#{params[:keyword_search]}%"
     @categories = Category.all
+    
+    if user_entered_keyword_search
+      wildcard_keywords = "%#{params[:keyword_search]}%"
 
-    check_user_search_values(wildcard_keywords)
+      @products = check_user_search_values(wildcard_keywords)
+    end
 
+    flash.now[:notice] = 'No products were found.' if @products.blank?
     were_any_products_returned?(@products)
   end
 
@@ -79,10 +87,8 @@ class ProductsController < ApplicationController
   end
 
   def were_any_products_returned?(products)
-    return @products = Product.order(:id)
+    @products = Product.order(:id)
                        .page(params[:page]).per(6) if products.blank?
-
-    flash.now[:notice] = 'No products were found.'
   end
 
   def check_user_search_values(wildcard_keywords)
