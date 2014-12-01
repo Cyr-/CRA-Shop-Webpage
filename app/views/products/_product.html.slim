@@ -9,4 +9,5 @@ div.product_page
 
   div.col-md-3
     p == product.sale_price.zero? ? number_to_currency(product.price) : number_to_currency(product.sale_price)
-    == link_to 'Add to cart', '#'
+    p == link_to 'Buy now', order_now_path(product), method: :post
+    p == link_to 'Add to cart', '#'
