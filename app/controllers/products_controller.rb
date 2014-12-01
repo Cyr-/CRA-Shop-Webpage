@@ -48,10 +48,9 @@ class ProductsController < ApplicationController
 
   def search_results
     @categories = Category.all
-    
+
     if user_entered_keyword_search
       wildcard_keywords = "%#{params[:keyword_search]}%"
-
       @products = check_user_search_values(wildcard_keywords)
     end
 

@@ -10,8 +10,12 @@ html lang="en"
       header
         h3.company_name Central Red Army Store
 
+      == render 'layouts/navigation'
+
       == yield
 
       hr
 
       == render 'layouts/footer'
+
+      == csrf_meta_tags
