@@ -1,0 +1,16 @@
+h2 Cart
+
+div.container-fluid
+  - if session[:cart]
+    - session[:cart].each do |id|
+      div.col-md-3.col-sm-6
+        div.well
+          h3 == link_to Product.find(id).name, product_path(Product.find(id))
+
+          - if Product.find(id).image.present?
+            == image_tag Product.find(id).image.url(:thumb), class: 'img-thumbnail'
+          h2
+            span.label.label-primary
+              == Product.find(id).sale_price.zero? ? number_to_currency(Product.find(id).price) : number_to_currency(Product.find(id).sale_price)
+
+          == link_to 'Remove', remove_from_cart_path(Product.find(id)), method: :post

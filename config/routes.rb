@@ -27,6 +27,12 @@ Rails.application.routes.draw do
 
   post 'order_complete' => 'orders#complete', as: 'order_complete'
 
+  post 'add_to_cart/:id' => 'orders#add_to_cart', as: 'add_to_cart'
+
+  post 'remove_from_cart/:id' => 'orders#remove_from_cart', as: 'remove_from_cart'
+
+  get 'cart' => 'orders#cart', as: 'cart'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
