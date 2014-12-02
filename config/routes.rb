@@ -25,6 +25,8 @@ Rails.application.routes.draw do
 
   post 'order_now/:id' => 'orders#order_now', as: 'order_now'
 
+  post 'order_complete' => 'orders#complete', as: 'order_complete'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
