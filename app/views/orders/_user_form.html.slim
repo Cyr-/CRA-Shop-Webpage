@@ -1,0 +1,26 @@
+== form_for @user, url: root_path do |f|
+  == label(:user, 'First name:')
+  == f.text_field :first_name
+  br
+  == label(:user, 'Last name:')
+  == f.text_field :last_name
+  br
+  == label(:user, 'Address:')
+  == f.text_field :address
+  br
+  == label(:user, 'Postal code:')
+  == f.text_field :postal_code
+  br
+  == label(:user, 'City:')
+  == f.text_field :city
+  br
+  == label(:user, 'Region:')
+  == f.select :region_id, Region.all.collect { |r| [r.name, r.id] }
+  br
+  == label(:user, 'Phone:')
+  == f.text_field :phone
+  br
+  == label(:user, 'E-mail:')
+  == f.text_field :email
+  br
+  == f.submit 'Place Order'

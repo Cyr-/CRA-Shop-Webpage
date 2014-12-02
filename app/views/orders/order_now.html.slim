@@ -1,26 +1,12 @@
-== form_for @user, url: root_path do |f|
-  == label(:user, :first_name)
-  == f.text_field :first_name
-  br
-  == label(:user, :last_name)
-  == f.text_field :last_name
-  br
-  == label(:user, :address)
-  == f.text_field :address
-  br
-  == label(:user, :postal_code)
-  == f.text_field :postal_code
-  br
-  == label(:user, :city)
-  == f.text_field :city
-  br
-  == label(:user, :region_id)
-  == f.select :region_id, Region.all.collect { |r| [r.name, r.id] }
-  br
-  == label(:user, :phone)
-  == f.text_field :phone
-  br
-  == label(:user, :email)
-  == f.text_field :email
-  br
-  == f.submit
+h2 Your Order:
+
+div.well
+  h3 == @product.name
+
+  - if @product.image.present?
+    == image_tag @product.image.url(:thumb), class: 'img-thumbnail'
+  h2
+    span.label.label-primary
+      == @product.sale_price.zero? ? number_to_currency(@product.price) : number_to_currency(@product.sale_price)
+
+== render 'user_form'
