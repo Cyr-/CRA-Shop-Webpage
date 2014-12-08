@@ -13,7 +13,8 @@ div.container-fluid
       - @products.each do |product|
         div.col-md-4.col-sm-6
           div.well
-            h3 == link_to product.name, product
+            div.product_name
+              h3 == link_to product.name, product
 
             - if product.image.present?
               == image_tag product.image.url(:thumb), class: 'img-thumbnail'
