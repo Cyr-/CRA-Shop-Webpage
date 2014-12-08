@@ -7,6 +7,7 @@ $cra-white: #FFF;
 
 body{
   background-color: $cra-red;
+  width: calc(100vw - 34px);
 
   .container{
     background-color: $cra-white;
