@@ -16,6 +16,7 @@ class OrdersController < ApplicationController
 
     order = @user.orders.build
 
+    order.user_id = @user.id
     order.amount = @sum
     order.tax = @sum * (@user.region.gst + @user.region.pst + @user.region.hst)
     order.shipped = false
@@ -24,14 +25,17 @@ class OrdersController < ApplicationController
     order.save
 
     @line_items.each do |item|
-      line_item = order.line_item.build
+      line_item = order.line_items.build
 
-      line_item.product_id = item.product_id
+      line_item.product_id = item.id
       line_item.price = item.sale_price.zero? ? item.price : item.sale_price
       line_item.quantity = 1
 
       line_item.save
     end
+
+    session.delete(:cart)
+
 
     redirect_to :order_complete
   end
@@ -63,6 +67,6 @@ class OrdersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :email, :password, :salt, :encrypted_password)
+    params.require(:user).permit(:first_name, :last_name, :city, :region_id, :postal_code, :address, :phone, :email)
   end
 end
