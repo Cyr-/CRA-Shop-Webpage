@@ -1,8 +1,7 @@
-- sum = 0
-
 - if session[:cart]
+
+  - sum = 0
+  - session[:cart].each do |id|
+    - sum += Product.find(id).sale_price.zero? ? Product.find(id).price : Product.find(id).sale_price
   == link_to cart_path
-    p Cart: #{session[:cart].count} items -
-    - session[:cart].each do |id|
-      - sum += Product.find(id).sale_price.zero? ? Product.find(id).price : Product.find(id).sale_price
-    == number_to_currency(sum)
+    p Cart: #{session[:cart].count} items - #{number_to_currency(sum)}
