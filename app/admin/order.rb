@@ -10,5 +10,36 @@ ActiveAdmin.register Order do
   #   permitted = [:permitted, :attributes]
   #   permitted << :other if resource.something?
   #   permitted
-  # end
+  # endmenu priority: 2
+
+  index title: 'Orders' do
+    selectable_column
+    column :id
+    column :user
+
+    column :amount do |order|
+      number_to_currency order.amount
+    end
+
+    column :tax do |order|
+      number_to_currency order.tax
+    end
+
+    column :shipped
+    column :paid
+
+    actions
+  end
+
+  ActiveAdmin.register Order do
+    show do |order|
+      div do
+        h2 'Line Items'
+        order.line_items.each do |line_item|
+          h4 "#{line_item.product.name} - #{number_to_currency line_item.price}"
+        end
+        active_admin_comments
+      end
+    end
+  end
 end

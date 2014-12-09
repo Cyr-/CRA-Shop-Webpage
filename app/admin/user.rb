@@ -11,4 +11,17 @@ ActiveAdmin.register User do
   #   permitted << :other if resource.something?
   #   permitted
   # end
+
+  index title: 'Users' do
+    selectable_column
+    column :first_name
+    column :last_name
+    column :address
+    column :postal_code
+    column :region
+    column :phone
+    column :email
+
+    actions
+  end
 end

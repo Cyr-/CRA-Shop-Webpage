@@ -35,8 +35,7 @@ class OrdersController < ApplicationController
     end
 
     session.delete(:cart)
-
-
+    
     redirect_to :order_complete
   end
 
