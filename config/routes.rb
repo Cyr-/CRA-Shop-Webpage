@@ -25,7 +25,9 @@ Rails.application.routes.draw do
 
   post 'order' => 'orders#order', as: 'order'
 
-  post 'order_complete' => 'orders#complete', as: 'order_complete'
+  post 'order_submit' => 'orders#order_submit', as: 'order_submit'
+
+  post 'order_complete' => 'orders#order_complete', as: 'order_complete'
 
   post 'add_to_cart/:id' => 'orders#add_to_cart', as: 'add_to_cart'
 

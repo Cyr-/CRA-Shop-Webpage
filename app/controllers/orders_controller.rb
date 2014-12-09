@@ -2,19 +2,38 @@ class OrdersController < ApplicationController
   def order
     @categories = Category.all
     @user = User.new
+  end
+
+  def order_submit
+    @user = User.new(user_params)
     @line_items = []
+    @sum = 0
     @cart = session[:cart] ||= []
     @cart.each do |product_id|
       @line_items << Product.find_by(product_id)
-      @sum += Product.find(id).sale_price.zero? ? Product.find(id).price : Product.find(id).sale_price
+      @sum += Product.find(product_id).sale_price.zero? ? Product.find(product_id).price : Product.find(product_id).sale_price
     end
 
     order = @user.orders.build
 
     order.amount = @sum
-    order.tax = @sum *
+    order.tax = @sum * (@user.region.gst + @user.region.pst + @user.region.hst)
     order.shipped = false
     order.paid = false
+
+    order.save
+
+    @line_items.each do |item|
+      line_item = order.line_item.build
+
+      line_item.product_id = item.product_id
+      line_item.price = item.sale_price.zero? ? item.price : item.sale_price
+      line_item.quantity = 1
+
+      line_item.save
+    end
+
+    redirect_to :order_complete
   end
 
   def order_complete
@@ -39,5 +58,11 @@ class OrdersController < ApplicationController
 
   def cart
     @categories = Category.all
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:username, :email, :password, :salt, :encrypted_password)
   end
 end
