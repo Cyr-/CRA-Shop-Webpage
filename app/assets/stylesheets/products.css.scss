@@ -11,6 +11,9 @@ body{
 
   .container{
     background-color: $cra-white;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
 
     .company_name{
       color: $cra-blue;
