@@ -87,7 +87,7 @@ class ProductsController < ApplicationController
 
   def were_any_products_returned?(products)
     @products = Product.order(:id)
-                       .page(params[:page]).per(6) if products.blank?
+                .page(params[:page]).per(6) if products.blank?
   end
 
   def check_user_search_values(wildcard_keywords)
