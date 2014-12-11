@@ -14,4 +14,5 @@ div.container-fluid
               == Product.find(id).sale_price.zero? ? number_to_currency(Product.find(id).price) : number_to_currency(Product.find(id).sale_price)
 
           == link_to 'Remove', remove_from_cart_path(Product.find(id)), method: :post
-    == link_to 'Place Order', order_path, method: :post
+    div.order
+      == link_to 'Place Order', order_path, method: :post
