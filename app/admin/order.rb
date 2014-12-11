@@ -12,6 +12,8 @@ ActiveAdmin.register Order do
   #   permitted
   # endmenu priority: 2
 
+  permit_params :user_id, :amount, :tax, :shipped, :paid
+
   index title: 'Orders' do
     selectable_column
     column :id

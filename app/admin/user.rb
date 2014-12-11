@@ -12,6 +12,9 @@ ActiveAdmin.register User do
   #   permitted
   # end
 
+  permit_params :first_name, :last_name, :address,
+                :postal_code, :region_id, :phone, :email
+
   index title: 'Users' do
     selectable_column
     column :first_name
